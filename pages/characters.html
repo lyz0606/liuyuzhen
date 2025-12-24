@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>角色介绍 - 疯狂动物城</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="css/characters.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 背景图片直接插入在HTML中 -->
+    <div class="background-image-wrapper">
+        <img src="../jpg/城市全貌.jpg" alt="疯狂动物城背景" class="background-image">
+    </div>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <i class="fas fa-paw"></i>
+                <span>疯狂动物城</span>
+            </a>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-links">
+                <li><a href="../index.html">首页</a></li>
+                <li><a href="characters.html" class="active">角色介绍</a></li>
+                <li><a href="gallery.html">作品集</a></li>
+                <li><a href="about.html">关于我们</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button id="search-toggle" class="search-toggle">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- 搜索框 -->
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="搜索角色或内容...">
+                <button id="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="search-results" id="search-results"></div>
+        </div>
+    </nav>
+
+     <!-- 页面标题 -->
+     <section class="page-header">
+        <!-- 直接在HTML中添加背景图片 -->
+        <div class="header-bg-wrapper">
+            <img src="../jpg/角色群像.jpg" alt="角色介绍背景" class="header-bg-image">
+            <!-- 可选：添加覆盖层增强文字可读性 -->
+            <div class="header-bg-overlay"></div>
+        </div>
+        
+        <div class="container">
+            <h1 class="page-title">
+                <i class="fas fa-users"></i>
+                角色介绍
+            </h1>
+            <p class="page-subtitle">探索疯狂动物城中的精彩角色</p>
+        </div>
+    </section>
+
+    <!-- 角色筛选 -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-controls">
+                <button class="filter-btn active" data-species="all">
+                    <i class="fas fa-th"></i> 全部
+                </button>
+                <button class="filter-btn" data-species="兔子">
+                    <i class="fas fa-paw"></i> 兔子
+                </button>
+                <button class="filter-btn" data-species="狐狸">
+                    <i class="fas fa-paw"></i> 狐狸
+                </button>
+                <button class="filter-btn" data-species="树懒">
+                    <i class="fas fa-paw"></i> 树懒
+                </button>
+                <button class="filter-btn" data-species="狮子">
+                    <i class="fas fa-paw"></i> 狮子
+                </button>
+                <button class="filter-btn" data-species="绵羊">
+                    <i class="fas fa-paw"></i> 绵羊
+                </button>
+                <button class="filter-btn" data-species="猎豹">
+                    <i class="fas fa-paw"></i> 猎豹
+                </button>
+                <button class="filter-btn" data-species="水牛">
+                    <i class="fas fa-paw"></i> 水牛
+                </button>
+                <button class="filter-btn" data-species="鼩鼱">
+                    <i class="fas fa-paw"></i> 鼩鼱
+                </button>
+                <button class="filter-btn" data-species="马">
+                    <i class="fas fa-paw"></i> 马
+                </button>
+                <button class="filter-btn" data-species="河狸">
+                    <i class="fas fa-paw"></i> 河狸
+                </button>
+                <button class="filter-btn" data-species="蛇">
+                    <i class="fas fa-paw"></i> 蛇
+                </button>
+                <button class="filter-btn" data-species="猞猁">
+                    <i class="fas fa-paw"></i> 猞猁
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 疯狂动物城2专区 -->
+    <section class="new-movie-section">
+        <div class="container">
+            <div class="new-movie-header">
+                <h2 class="new-movie-title">
+                    <i class="fas fa-film"></i>
+                    <span>疯狂动物城2</span>
+                    <span class="new-movie-badge">即将上映</span>
+                </h2>
+                <p class="new-movie-subtitle">探索即将到来的续集中全新角色阵容</p>
+                <div class="new-movie-tagline">
+                    <i class="fas fa-star"></i>
+                    <span>新角色 · 新冒险 · 新挑战</span>
+                </div>
+            </div>
+            
+            <div class="new-characters-grid">
+                <!--  疯狂动物城2新角色 -->
+                <div class="new-character-card" data-species="马">
+                    <div class="character-badge">新角色</div>
+                    <div class="new-character-img-container">
+                        <img src="../jpg/马飞扬.jpg" alt="马飞扬" class="new-character-img" onerror="this.onerror=null;this.src='../img/characters/default.jpg';">
+                    </div>
+                    <div class="new-character-info">
+                        <h3 class="new-character-name">马飞扬</h3>
+                        <span class="new-character-species">马·市长</span>
+                        <p class="new-character-desc">《疯狂动物城2》中的新角色，影坛转站政坛新晋市长（第3任）既爱聚光灯又想当英雄的魅力领袖。</p>
+        
+                        <div class="new-character-stats">
+                            <div class="new-stat">
+                                <span class="new-stat-label">魅力</span>
+                                <div class="new-stat-bar">
+                                    <div class="new-stat-fill" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div class="new-stat">
+                                <span class="new-stat-label">反差</span>
+                                <div class="new-stat-bar">
+                                    <div class="new-stat-fill" style="width: 88%"></div>
+                                </div>
+                            </div>
+                            <div class="new-stat">
+                                <span class="new-stat-label">魄力</span>
+                                <div class="new-stat-bar">
+                                    <div class="new-stat-fill" style="width: 92%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!--  疯狂动物城2新角色 -->
+                <div class="new-character-card" data-species="河狸">
+                    <div class="character-badge">新角色</div>
+                    <div class="new-character-img-container">
+                        <img src="../jpg/狸宝.webp" alt="狸宝" class="new-character-img" onerror="this.onerror=null;this.src='../img/characters/default.jpg';">
+                    </div>
+                    <div class="new-character-info">
+                        <h3 class="new-character-name">狸宝·梅普迪</h3>
+                        <span class="new-character-species">河狸 · 万事通</span>
+                        <p class="new-character-desc">动物城湿地市场的“万事通”超爱探秘的城市探险爱好者啥奇闻异事都门清~</p>
+                    
+                        <div class="new-character-stats">
+                            <div class="new-stat">
+                                <span class="new-stat-label">导航值</span>
+                                <div class="new-stat-bar">
+                                    <div class="new-stat-fill" style="width: 98%"></div>
+                                </div>
+                            </div>
+                            <div class="new-stat">
+                                <span class="new-stat-label">技能</span>
+                                <div class="new-stat-bar">
+                                    <div class="new-stat-fill" style="width: 100%"></div>
+                                </div>
+                            </div>
+                            <div class="new-stat">
+                                <span class="new-stat-label">探秘</span>
+                                <div class="new-stat-bar">
+                                    <div class="new-stat-fill" style="width: 70%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!--  疯狂动物城2新角色 -->
+                <div class="new-character-card" data-species="蛇">
+                    <div class="character-badge">新角色</div>
+                    <div class="new-character-img-container">
+                        <img src="../jpg/盖瑞一条蛇.jpeg" alt="盖瑞" class="new-character-img" onerror="this.onerror=null;this.src='../img/characters/default.jpg';">
+                    </div>
+                    <div class="new-character-info">
+                        <h3 class="new-character-name">盖瑞一条蛇</h3>
+                        <span class="new-character-species">蛇 </span>
+                        <p class="new-character-desc">动物城百年真相的揭露者，爬行动物代表/自带“解药”小天使</p>
+                       
+                        <div class="new-character-stats">
+                            <div class="new-stat">
+                                <span class="new-stat-label">神秘</span>
+                                <div class="new-stat-bar">
+                                    <div class="new-stat-fill" style="width: 94%"></div>
+                                </div>
+                            </div>
+                            <div class="new-stat">
+                                <span class="new-stat-label">勇敢</span>
+                                <div class="new-stat-bar">
+                                    <div class="new-stat-fill" style="width: 96%"></div>
+                                </div>
+                            </div>
+                            <div class="new-stat">
+                                <span class="new-stat-label">智慧</span>
+                                <div class="new-stat-bar">
+                                    <div class="new-stat-fill" style="width: 90%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!--  疯狂动物城2新角色 -->
+                <div class="new-character-card featured-character" data-species="猞猁">
+                    <div class="character-badge">特别推荐</div>
+                    <div class="new-character-img-container">
+                        <img src="../jpg/宝伯特.jpg" alt="宝伯特" class="new-character-img" onerror="this.onerror=null;this.src='../img/characters/default.jpg';">
+                    </div>
+                    <div class="new-character-info">
+                        <h3 class="new-character-name">宝伯特</h3>
+                        <span class="new-character-species">猞猁 </span>
+                        <p class="new-character-desc">动物城掌权家族林雪猁家族的小儿子，想极力证明自己的“被绑架对象”。</p>
+                       
+                
+                        <div class="new-character-stats">
+                            <div class="new-stat">
+                                <span class="new-stat-label">阴险</span>
+                                <div class="new-stat-bar">
+                                    <div class="new-stat-fill" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div class="new-stat">
+                                <span class="new-stat-label">娇憨</span>
+                                <div class="new-stat-bar">
+                                    <div class="new-stat-fill" style="width: 92%"></div>
+                                </div>
+                            </div>
+                            <div class="new-stat">
+                                <span class="new-stat-label">自卑</span>
+                                <div class="new-stat-bar">
+                                    <div class="new-stat-fill" style="width: 75%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 分隔线 -->
+    <div class="section-divider">
+        <div class="divider-line"></div>
+        <div class="divider-icon">
+            <i class="fas fa-star"></i>
+        </div>
+        <div class="divider-line"></div>
+    </div>
+
+    <!-- 疯狂动物城1经典角色 -->
+    <section class="classic-movie-section">
+        <div class="container">
+            <div class="classic-movie-header">
+                <h2 class="classic-movie-title">
+                    <i class="fas fa-star"></i>
+                    <span>疯狂动物城1 - 经典角色</span>
+                </h2>
+                <p class="classic-movie-subtitle">重温经典，回顾那些深受喜爱的角色们</p>
+            </div>
+            
+            <div class="characters-container" id="characters-container">
+                <!-- 朱迪·霍普斯 -->
+                <div class="character-card classic-character" data-species="兔子">
+                    <div class="character-img-container">
+                        <img src="../jpg/兔子.jpg" alt="朱迪·霍普斯" class="character-img" onerror="this.onerror=null;this.src='../img/characters/default.jpg';">
+                    </div>
+                    <div class="character-info">
+                        <h3>朱迪·霍普斯</h3>
+                        <span class="character-species">兔子 · 警官</span>
+                        <p class="character-desc">疯狂动物城的第一位兔子警官，来自兔子洞镇。她充满正义感和勇气，梦想是让世界变得更美好。朱迪克服了种种偏见，证明即使是小兔子也能成就大事业。</p>
+                        <div class="character-traits">
+                            <span class="trait">勇敢</span>
+                            <span class="trait">正义</span>
+                            <span class="trait">乐观</span>
+                            <span class="trait">执着</span>
+                        </div>
+                        <div class="character-stats">
+                            <div class="stat">
+                                <span class="stat-label">勇气</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">智慧</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">速度</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 90%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 尼克·王尔德 -->
+                <div class="character-card classic-character" data-species="狐狸">
+                    <div class="character-img-container">
+                        <img src="../jpg/尼克.jpg" alt="尼克·王尔德" class="character-img" onerror="this.onerror=null;this.src='../img/characters/default.jpg';">
+                    </div>
+                    <div class="character-info">
+                        <h3>尼克·王尔德</h3>
+                        <span class="character-species">狐狸 · 企业家</span>
+                        <p class="character-desc">聪明机智的狐狸，表面上是街头小贩，实际上心地善良。与朱迪成为搭档后，共同破解动物城的谜案。尼克的故事证明，真正的性格不是由物种决定的。</p>
+                        <div class="character-traits">
+                            <span class="trait">聪明</span>
+                            <span class="trait">幽默</span>
+                            <span class="trait">忠诚</span>
+                            <span class="trait">机智</span>
+                        </div>
+                        <div class="character-stats">
+                            <div class="stat">
+                                <span class="stat-label">智谋</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 92%"></div>
+                                </div>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">魅力</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 88%"></div>
+                                </div>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">敏捷</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 闪电 -->
+                <div class="character-card classic-character" data-species="树懒">
+                    <div class="character-img-container">
+                        <img src="../jpg/闪电.webp" alt="闪电" class="character-img" onerror="this.onerror=null;this.src='../img/characters/default.jpg';">
+                    </div>
+                    <div class="character-info">
+                        <h3>闪电</h3>
+                        <span class="character-species">树懒 · DMV员工</span>
+                        <p class="character-desc">动物城车辆管理局的明星员工，以其极慢的行动和说话速度而闻名。闪电最大的爱好是开快车，这一点与他的日常形象形成鲜明对比。</p>
+                        <div class="character-traits">
+                            <span class="trait">缓慢</span>
+                            <span class="trait">耐心</span>
+                            <span class="trait">友好</span>
+                            <span class="trait">幽默</span>
+                        </div>
+                        <div class="character-stats">
+                            <div class="stat">
+                                <span class="stat-label">速度</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 10%"></div>
+                                </div>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">耐心</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 98%"></div>
+                                </div>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">幽默</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 狮市长 -->
+                <div class="character-card classic-character" data-species="狮子">
+                    <div class="character-img-container">
+                        <img src="../jpg/狮市长.jpg" alt="狮市长" class="character-img" onerror="this.onerror=null;this.src='../img/characters/default.jpg';">
+                    </div>
+                    <div class="character-info">
+                        <h3>狮市长</h3>
+                        <span class="character-species">狮子 · 市长</span>
+                        <p class="character-desc">动物城的市长，强大而有影响力，致力于维护城市的和平与秩序。作为领导者，他努力平衡城市中不同物种之间的关系。</p>
+                        <div class="character-traits">
+                            <span class="trait">威严</span>
+                            <span class="trait">权威</span>
+                            <span class="trait">公正</span>
+                            <span class="trait">责任感</span>
+                        </div>
+                        <div class="character-stats">
+                            <div class="stat">
+                                <span class="stat-label">领导力</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">力量</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">智慧</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 82%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 羊副市长 -->
+                <div class="character-card classic-character" data-species="绵羊">
+                    <div class="character-img-container">
+                        <img src="../jpg/羊副市长.png" alt="羊副市长" class="character-img" onerror="this.onerror=null;this.src='../img/characters/default.jpg';">
+                    </div>
+                    <div class="character-info">
+                        <h3>羊副市长</h3>
+                        <span class="character-species">绵羊 · 副市长</span>
+                        <p class="character-desc">看似温顺的副市长，实际上有着复杂的内心和计划。她代表着动物城中那些感觉自己被忽视和边缘化的群体。</p>
+                        <div class="character-traits">
+                            <span class="trait">智慧</span>
+                            <span class="trait">谋略</span>
+                            <span class="trait">复杂</span>
+                            <span class="trait">野心</span>
+                        </div>
+                        <div class="character-stats">
+                            <div class="stat">
+                                <span class="stat-label">智谋</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">野心</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 92%"></div>
+                                </div>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">演技</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 88%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 大先生 -->
+                <div class="character-card classic-character" data-species="鼩鼱">
+                    <div class="character-img-container">
+                        <img src="../jpg/大先生.webp" alt="大先生" class="character-img" onerror="this.onerror=null;this.src='../img/characters/default.jpg';">
+                    </div>
+                    <div class="character-info">
+                        <h3>大先生</h3>
+                        <span class="character-species">鼩鼱 · 黑帮老大</span>
+                        <p class="character-desc">动物城地下世界的统治者，体型虽小但权力巨大。他深受北极熊保镖的尊敬，是城市中不可忽视的力量。</p>
+                        <div class="character-traits">
+                            <span class="trait">威严</span>
+                            <span class="trait">强势</span>
+                            <span class="trait">传统</span>
+                            <span class="trait">忠诚</span>
+                        </div>
+                        <div class="character-stats">
+                            <div class="stat">
+                                <span class="stat-label">权威</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 96%"></div>
+                                </div>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">影响力</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 94%"></div>
+                                </div>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">忠诚</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 豹警官 -->
+                <div class="character-card classic-character" data-species="猎豹">
+                    <div class="character-img-container">
+                        <img src="../jpg/豹警官.jpg" alt="豹警官" class="character-img" onerror="this.onerror=null;this.src='../img/characters/default.jpg';">
+                    </div>
+                    <div class="character-info">
+                        <h3>豹警官</h3>
+                        <span class="character-species">猎豹 · 前台警官</span>
+                        <p class="character-desc">警局的前台接待，热爱甜甜圈和夏奇羊，是朱迪的热情支持者。尽管体型庞大，但他性格温和，是警局的开心果。</p>
+                        <div class="character-traits">
+                            <span class="trait">热情</span>
+                            <span class="trait">友好</span>
+                            <span class="trait">爱吃</span>
+                            <span class="trait">乐观</span>
+                        </div>
+                        <div class="character-stats">
+                            <div class="stat">
+                                <span class="stat-label">热情</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 98%"></div>
+                                </div>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">速度</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">食量</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 90%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 牛局长 -->
+                <div class="character-card classic-character" data-species="水牛">
+                    <div class="character-img-container">
+                        <img src="../jpg/牛局长.png" alt="牛局长" class="character-img" onerror="this.onerror=null;this.src='../img/characters/default.jpg';">
+                    </div>
+                    <div class="character-info">
+                        <h3>牛局长</h3>
+                        <span class="character-species">水牛 · 警察局长</span>
+                        <p class="character-desc">严肃的警察局长，最初对朱迪持怀疑态度，但最终认可她的能力。他是传统执法方式的代表，但也愿意接受改变。</p>
+                        <div class="character-traits">
+                            <span class="trait">严肃</span>
+                            <span class="trait">务实</span>
+                            <span class="trait">公正</span>
+                            <span class="trait">责任感</span>
+                        </div>
+                        <div class="character-stats">
+                            <div class="stat">
+                                <span class="stat-label">力量</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 92%"></div>
+                                </div>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">纪律</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">公正</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 88%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 夏奇羊 -->
+                <div class="character-card classic-character" data-species="绵羊">
+                    <div class="character-img-container">
+                        <img src="../jpg/夏奇羊.webp" alt="夏奇羊" class="character-img" onerror="this.onerror=null;this.src='../img/characters/default.jpg';">
+                    </div>
+                    <div class="character-info">
+                        <h3>夏奇羊</h3>
+                        <span class="character-species">绵羊 · 流行歌手</span>
+                        <p class="character-desc">动物城最受欢迎的流行歌手，以其热单"尝试一切"而闻名。她是动物城的文化象征，倡导包容和理解。</p>
+                        <div class="character-traits">
+                            <span class="trait">才华</span>
+                            <span class="trait">时尚</span>
+                            <span class="trait">包容</span>
+                            <span class="trait">鼓舞人心</span>
+                        </div>
+                        <div class="character-stats">
+                            <div class="stat">
+                                <span class="stat-label">才华</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 98%"></div>
+                                </div>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">魅力</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 96%"></div>
+                                </div>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">影响力</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 94%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 芬尼克 -->
+                <div class="character-card classic-character" data-species="耳廓狐">
+                    <div class="character-img-container">
+                        <img src="../jpg/芬尼克.webp" alt="芬尼克" class="character-img" onerror="this.onerror=null;this.src='../img/characters/default.jpg';">
+                    </div>
+                    <div class="character-info">
+                        <h3>芬尼克</h3>
+                        <span class="character-species">耳廓狐 · 街头表演者</span>
+                        <p class="character-desc">尼克的朋友和合作伙伴，体型小巧但声音低沉，常在街头表演中扮演婴儿。他和尼克有着深厚的友谊。</p>
+                        <div class="character-traits">
+                            <span class="trait">机智</span>
+                            <span class="trait">忠诚</span>
+                            <span class="trait">幽默</span>
+                            <span class="trait">演技</span>
+                        </div>
+                        <div class="character-stats">
+                            <div class="stat">
+                                <span class="stat-label">演技</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">忠诚</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 88%"></div>
+                                </div>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">幽默</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-paw"></i> 疯狂动物城</h3>
+                    <p>探索动物城的奇妙世界，与朱迪和尼克一起冒险！</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="../index.html">首页</a></li>
+                        <li><a href="characters.html">角色介绍</a></li>
+                        <li><a href="gallery.html">作品集</a></li>
+                        <li><a href="about.html">关于我们</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>联系我们</h4>
+                    <p>邮箱: info@zootopia.com</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-weixin"></i></a>
+                        <a href="#"><i class="fab fa-weibo"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 疯狂动物城粉丝站. 保留所有权利.</p>
+                <p>本网站为粉丝创作，非官方</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/theme.js"></script>
+    <script>
+    // 角色筛选功能
+    document.addEventListener('DOMContentLoaded', function() {
+        // 获取所有筛选按钮
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const characterCards = document.querySelectorAll('.character-card, .new-character-card');
+        
+        // 为每个筛选按钮添加点击事件
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // 获取筛选的物种
+                const species = this.getAttribute('data-species');
+                
+                // 更新按钮的激活状态
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                
+                // 筛选角色卡片
+                filterCharacters(species);
+            });
+        });
+        
+        // 筛选函数
+        function filterCharacters(species) {
+            characterCards.forEach(card => {
+                const cardSpecies = card.getAttribute('data-species');
+                
+                if (species === 'all' || cardSpecies === species) {
+                    card.style.display = 'block';
+                    // 添加淡入动画
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    
+                    setTimeout(() => {
+                        card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 10);
+                } else {
+                    // 添加淡出动画
+                    card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                }
+            });
+        }
+        
+        // 搜索功能
+        const searchInput = document.getElementById('search-input');
+        const searchBtn = document.getElementById('search-btn');
+        const searchToggle = document.getElementById('search-toggle');
+        const searchContainer = document.querySelector('.search-container');
+        
+        // 搜索框切换
+        if (searchToggle) {
+            searchToggle.addEventListener('click', () => {
+                searchContainer.classList.toggle('active');
+                if (searchContainer.classList.contains('active')) {
+                    setTimeout(() => searchInput.focus(), 300);
+                }
+            });
+        }
+        
+        // 搜索功能
+        function performSearch() {
+            const query = searchInput.value.toLowerCase().trim();
+            const searchResults = document.getElementById('search-results');
+            
+            if (query.length < 2) {
+                searchResults.innerHTML = '';
+                searchResults.classList.remove('active');
+                return;
+            }
+            
+            const results = [];
+            characterCards.forEach(card => {
+                const name = card.querySelector('h3').textContent.toLowerCase();
+                const species = card.querySelector('.character-species, .new-character-species').textContent.toLowerCase();
+                const desc = card.querySelector('.character-desc, .new-character-desc').textContent.toLowerCase();
+                
+                if (name.includes(query) || species.includes(query) || desc.includes(query)) {
+                    results.push({
+                        name: card.querySelector('h3').textContent,
+                        species: card.querySelector('.character-species, .new-character-species').textContent,
+                        desc: card.querySelector('.character-desc, .new-character-desc').textContent.substring(0, 100) + '...',
+                        element: card
+                    });
+                }
+            });
+            
+            if (results.length === 0) {
+                searchResults.innerHTML = '<p class="no-results">没有找到相关结果</p>';
+                searchResults.classList.add('active');
+                return;
+            }
+            
+            const html = results.map(result => `
+                <div class="search-result-item">
+                    <div class="result-img">
+                        <img src="${result.element.querySelector('img').src}" alt="${result.name}">
+                    </div>
+                    <div class="result-info">
+                        <h4>${result.name}</h4>
+                        <p class="result-species">${result.species}</p>
+                        <p class="result-desc">${result.desc}</p>
+                    </div>
+                </div>
+            `).join('');
+            
+            searchResults.innerHTML = html;
+            searchResults.classList.add('active');
+            
+            // 为搜索结果添加点击事件
+            document.querySelectorAll('.search-result-item').forEach((item, index) => {
+                item.addEventListener('click', () => {
+                    const card = results[index].element;
+                    
+                    // 滚动到对应卡片
+                    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    
+                    // 高亮显示
+                    card.style.boxShadow = '0 0 0 3px var(--secondary-color)';
+                    setTimeout(() => {
+                        card.style.boxShadow = '';
+                    }, 2000);
+                    
+                    // 关闭搜索框
+                    searchContainer.classList.remove('active');
+                    searchResults.classList.remove('active');
+                    searchInput.value = '';
+                });
+            });
+        }
+        
+        // 搜索按钮点击事件
+        if (searchBtn) {
+            searchBtn.addEventListener('click', performSearch);
+        }
+        
+        // 搜索输入框回车事件
+        if (searchInput) {
+            searchInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') performSearch();
+            });
+            
+            searchInput.addEventListener('input', (e) => {
+                if (e.target.value.length > 2) {
+                    performSearch();
+                } else {
+                    const searchResults = document.getElementById('search-results');
+                    searchResults.innerHTML = '';
+                    searchResults.classList.remove('active');
+                }
+            });
+        }
+        
+        // 移动菜单功能
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        if (mobileMenuBtn && navLinks) {
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                
+                if (navLinks.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+            
+            // 点击链接后关闭菜单
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    const icon = mobileMenuBtn.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                });
+            });
+        }
+        
+        // 主题切换功能
+        const themeToggle = document.getElementById('theme-toggle');
+        if (themeToggle) {
+            const themeIcon = themeToggle.querySelector('i');
+            let currentTheme = localStorage.getItem('theme') || 'light';
+            
+            // 应用保存的主题
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            if (currentTheme === 'dark') {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            }
+            
+            themeToggle.addEventListener('click', () => {
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                document.documentElement.setAttribute('data-theme', newTheme);
+                currentTheme = newTheme;
+                
+                // 更新图标
+                if (newTheme === 'dark') {
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                } else {
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                }
+                
+                // 保存到localStorage
+                localStorage.setItem('theme', newTheme);
+            });
+        }
+    });
+    </script>
+</body>
+</html>

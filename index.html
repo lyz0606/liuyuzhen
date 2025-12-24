@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>疯狂动物城 - 官方粉丝站</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <body style="
+    position: relative;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+">
+    <!-- 背景层 -->
+    <div style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('jpg/城市全貌.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        filter: blur(8px) brightness(0.8);
+        z-index: -1;
+    "></div>
+    
+    <!-- 内容容器 -->
+    <div style="
+        position: relative;
+        z-index: 1;
+    ">
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-paw"></i>
+                <span>疯狂动物城</span>
+            </a>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">首页</a></li>
+                <li><a href="pages/characters.html">角色介绍</a></li>
+                <li><a href="pages/gallery.html">作品集</a></li>
+                <li><a href="pages/about.html">关于我们</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button id="search-toggle" class="search-toggle">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- 搜索框 -->
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="搜索角色或内容...">
+                <button id="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="search-results" id="search-results"></div>
+        </div>
+    </nav>
+    <!-- 主要内容区域 (SPA风格) -->
+    <main id="app-content">
+        <!-- 英雄区域 -->
+        <section class="hero">
+            <!-- 直接在HTML中添加背景图片 -->
+            <div class="hero-bg-wrapper">
+                <img src="jpg/背景.jpg" alt="疯狂动物城英雄背景" class="hero-bg-image">
+                <!-- 可选的覆盖层用于增强文字可读性 -->
+                <div class="hero-bg-overlay"></div>
+            </div>
+            
+            <div class="hero-content">
+                <h1>欢迎来到疯狂动物城</h1>
+                <p>探索这个充满奇迹的城市，与朱迪和尼克一起踏上激动人心的冒险之旅！</p>
+                <div class="hero-btns">
+                    <a href="#" data-route="/characters" class="btn btn-primary">
+                        <i class="fas fa-users"></i> 探索角色
+                    </a>
+                    <button id="feedback-btn" class="btn btn-secondary">
+                        <i class="fas fa-comment-dots"></i> 意见反馈
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 热门角色水平滚动屏 -->
+<section class="hot-characters-section">
+    <div class="container">
+        <div class="section-title">
+            <h2>热门角色</h2>
+            <p>认识疯狂动物城中最受欢迎的角色</p>
+            <!-- 滚动导航按钮 -->
+            <div class="scroll-controls">
+                <button class="scroll-btn scroll-left" aria-label="向左滚动">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="scroll-btn scroll-right" aria-label="向右滚动">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- 水平滚动容器 -->
+        <div class="horizontal-scroll-container">
+            <!-- 热门角色水平滚动内容 -->
+            <div class="characters-horizontal-grid" id="featured-characters">
+                <!-- 朱迪·霍普斯 -->
+                <div class="character-horizontal-card" data-species="兔子">
+                    <div class="character-img-horizontal">
+                        <img src="jpg/兔子.jpg" alt="朱迪·霍普斯" onerror="this.src='https://via.placeholder.com/300x400?text=朱迪·霍普斯'">
+                        <!-- 播放按钮叠加层 -->
+                        <div class="video-play-overlay" data-video="judy-video">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                    </div>
+                    <div class="character-info-horizontal">
+                        <h3>朱迪·霍普斯</h3>
+                        <p class="character-species-horizontal">兔子 · 警官</p>
+                        <p class="character-desc-horizontal">疯狂动物城的第一位兔子警官，充满正义感和勇气，梦想是让世界变得更美好。</p>
+                        <div class="character-stats-horizontal">
+                            <span><i class="fas fa-heart"></i> 98% 喜爱度</span>
+                            <span><i class="fas fa-star"></i> 主角</span>
+                        </div>
+                        <button class="btn btn-primary learn-more-btn-horizontal" data-video="judy-video">
+                            <i class="fas fa-play-circle"></i> 观看介绍
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 尼克·王尔德 -->
+                <div class="character-horizontal-card" data-species="狐狸">
+                    <div class="character-img-horizontal">
+                        <img src="jpg/尼克.jpg" alt="尼克·王尔德" onerror="this.src='https://via.placeholder.com/300x400?text=尼克·王尔德'">
+                        <!-- 播放按钮叠加层 -->
+                        <div class="video-play-overlay" data-video="nick-video">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                    </div>
+                    <div class="character-info-horizontal">
+                        <h3>尼克·王尔德</h3>
+                        <p class="character-species-horizontal">狐狸 · 企业家</p>
+                        <p class="character-desc-horizontal">狡猾但心地善良的狐狸，与朱迪成为搭档，共同破解动物城的谜案。</p>
+                        <div class="character-stats-horizontal">
+                            <span><i class="fas fa-heart"></i> 95% 喜爱度</span>
+                            <span><i class="fas fa-star"></i> 主角</span>
+                        </div>
+                        <button class="btn btn-primary learn-more-btn-horizontal" data-video="nick-video">
+                            <i class="fas fa-play-circle"></i> 观看介绍
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 闪电 -->
+                <div class="character-horizontal-card" data-species="树懒">
+                    <div class="character-img-horizontal">
+                        <img src="jpg/闪电.webp" alt="闪电" onerror="this.src='https://via.placeholder.com/300x400?text=闪电'">
+                        <!-- 播放按钮叠加层 -->
+                        <div class="video-play-overlay" data-video="flash-video">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                    </div>
+                    <div class="character-info-horizontal">
+                        <h3>闪电</h3>
+                        <p class="character-species-horizontal">树懒 · DMV员工</p>
+                        <p class="character-desc-horizontal">动物城车辆管理局的明星员工，以其极慢的行动和说话速度而闻名。</p>
+                        <div class="character-stats-horizontal">
+                            <span><i class="fas fa-heart"></i> 92% 喜爱度</span>
+                            <span><i class="fas fa-star"></i> 人气角色</span>
+                        </div>
+                        <button class="btn btn-primary learn-more-btn-horizontal" data-video="flash-video">
+                            <i class="fas fa-play-circle"></i> 观看介绍
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 狮市长 -->
+                <div class="character-horizontal-card" data-species="狮子">
+                    <div class="character-img-horizontal">
+                        <img src="jpg/狮市长.jpg" alt="狮市长" onerror="this.src='https://via.placeholder.com/300x400?text=狮市长'">
+                        <!-- 播放按钮叠加层 -->
+                        <div class="video-play-overlay" data-video="mayor-video">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                    </div>
+                    <div class="character-info-horizontal">
+                        <h3>狮市长</h3>
+                        <p class="character-species-horizontal">狮子 · 市长</p>
+                        <p class="character-desc-horizontal">动物城的市长，强大而有影响力，致力于维护城市的和平与秩序。</p>
+                        <div class="character-stats-horizontal">
+                            <span><i class="fas fa-heart"></i> 85% 喜爱度</span>
+                            <span><i class="fas fa-star"></i> 重要角色</span>
+                        </div>
+                        <button class="btn btn-primary learn-more-btn-horizontal" data-video="mayor-video">
+                            <i class="fas fa-play-circle"></i> 观看介绍
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 豹警官 -->
+                <div class="character-horizontal-card" data-species="猎豹">
+                    <div class="character-img-horizontal">
+                        <img src="jpg/豹警官.jpg" alt="豹警官" onerror="this.src='https://via.placeholder.com/300x400?text=豹警官'">
+                        <!-- 播放按钮叠加层 -->
+                        <div class="video-play-overlay" data-video="clawhauser-video">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                    </div>
+                    <div class="character-info-horizontal">
+                        <h3>豹警官</h3>
+                        <p class="character-species-horizontal">猎豹 · 前台警官</p>
+                        <p class="character-desc-horizontal">警局的前台接待，热爱甜甜圈和夏奇羊，是朱迪的热情支持者。</p>
+                        <div class="character-stats-horizontal">
+                            <span><i class="fas fa-heart"></i> 90% 喜爱度</span>
+                            <span><i class="fas fa-star"></i> 人气角色</span>
+                        </div>
+                        <button class="btn btn-primary learn-more-btn-horizontal" data-video="clawhauser-video">
+                            <i class="fas fa-play-circle"></i> 观看介绍
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 夏奇羊 -->
+                <div class="character-horizontal-card" data-species="绵羊">
+                    <div class="character-img-horizontal">
+                        <img src="jpg/夏奇羊.webp" alt="夏奇羊" onerror="this.src='https://via.placeholder.com/300x400?text=夏奇羊'">
+                        <!-- 播放按钮叠加层 -->
+                        <div class="video-play-overlay" data-video="gazelle-video">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                    </div>
+                    <div class="character-info-horizontal">
+                        <h3>夏奇羊</h3>
+                        <p class="character-species-horizontal">绵羊 · 流行歌手</p>
+                        <p class="character-desc-horizontal">动物城最受欢迎的流行歌手，以其热单"尝试一切"而闻名。</p>
+                        <div class="character-stats-horizontal">
+                            <span><i class="fas fa-heart"></i> 88% 喜爱度</span>
+                            <span><i class="fas fa-star"></i> 文化象征</span>
+                        </div>
+                        <button class="btn btn-primary learn-more-btn-horizontal" data-video="gazelle-video">
+                            <i class="fas fa-play-circle"></i> 观看介绍
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 滚动进度指示器 -->
+            <div class="scroll-indicator">
+                <div class="scroll-progress"></div>
+            </div>
+        </div>
+        
+        <!-- 视频模态框保持不变... -->
+        <div class="video-modal" id="judy-video-modal">
+            <div class="video-modal-content">
+                <span class="close-video-modal">&times;</span>
+                <div class="video-container">
+                    <div class="video-wrapper">
+                        <video controls class="character-video">
+                            <source src="jpg/朱迪.mp4" type="video/mp4">
+                            <source src="../videos/judy-intro.webm" type="video/webm">
+                            您的浏览器不支持视频播放，请升级浏览器。
+                        </video>
+                    </div>
+                    <div class="video-info">
+                        <h3>朱迪·霍普斯 - 兔子警官</h3>
+                        <p>朱迪·霍普斯是疯狂动物城的第一位兔子警官，来自兔子洞镇。她充满正义感和勇气，梦想是让世界变得更美好。朱迪克服了种种偏见，证明即使是小兔子也能成就大事业。</p>
+                        <div class="video-stats">
+                            <span><i class="fas fa-eye"></i> 1.2M 观看</span>
+                            <span><i class="fas fa-clock"></i> 2:30 时长</span>
+                            <span><i class="fas fa-calendar"></i> 2023年发布</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="video-modal" id="nick-video-modal">
+            <div class="video-modal-content">
+                <span class="close-video-modal">&times;</span>
+                <div class="video-container">
+                    <div class="video-wrapper">
+                        <video controls class="character-video">
+                            <source src="jpg/尼克.mp4" type="video/mp4">
+                            <source src="../videos/nick-intro.webm" type="video/webm">
+                            您的浏览器不支持视频播放，请升级浏览器。
+                        </video>
+                    </div>
+                    <div class="video-info">
+                        <h3>尼克·王尔德 - 机智的狐狸</h3>
+                        <p>聪明机智的狐狸，表面上是街头小贩，实际上心地善良。与朱迪成为搭档后，共同破解动物城的谜案。尼克的故事证明，真正的性格不是由物种决定的。</p>
+                        <div class="video-stats">
+                            <span><i class="fas fa-eye"></i> 980K 观看</span>
+                            <span><i class="fas fa-clock"></i> 2:15 时长</span>
+                            <span><i class="fas fa-calendar"></i> 2023年发布</span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="video-modal" id="flash-video-modal">
+            <div class="video-modal-content">
+                <span class="close-video-modal">&times;</span>
+                <div class="video-container">
+                    <div class="video-wrapper">
+                        <video controls class="character-video">
+                            <source src="jpg/闪电.mp4" type="video/mp4">
+                            <source src="../videos/flash-intro.webm" type="video/webm">
+                            您的浏览器不支持视频播放，请升级浏览器。
+                        </video>
+                    </div>
+                    <div class="video-info">
+                        <h3>闪电 - DMV明星员工</h3>
+                        <p>动物城车辆管理局的明星员工，以其极慢的行动和说话速度而闻名。闪电最大的爱好是开快车，这一点与他的日常形象形成鲜明对比。</p>
+                        <div class="video-stats">
+                            <span><i class="fas fa-eye"></i> 1.5M 观看</span>
+                            <span><i class="fas fa-clock"></i> 1:45 时长</span>
+                            <span><i class="fas fa-calendar"></i> 2023年发布</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="container">
+    <div class="section-title">
+        <h2>最新动态</h2>
+        <p>了解疯狂动物城的最新消息</p>
+    </div>
+    
+    <div class="news-grid" id="news-section">
+        <!-- 最新动态新闻 -->
+        <div class="news-card">
+            <div class="news-image">
+                <!-- 图片来源参考：可选用电影正式海报[citation:1]或角色概念图[citation:5] -->
+                <img src="jpg/海报.webp" alt="《疯狂动物城2》概念海报">
+            </div>
+            <div class="news-category">电影新闻</div>
+            <h3>《疯狂动物城2》制作确认！</h3>
+            <p>迪士尼正式宣布将制作《疯狂动物城》续集，预计2026年上映。这部备受期待的作品将再次由拜伦·霍华德（Byron Howard）和瑞奇·摩尔（Rich Moore）等原班核心团队执导[citation:5]。粉丝们可以期待朱迪和尼克回归，共同探索动物城的新案件与新区域。</p>
+            <div class="news-date">
+                <i class="fas fa-calendar"></i> 2025-12-20
+            </div>
+        </div>
+        
+        <div class="news-card">
+            <div class="news-image">
+                <!-- 图片来源参考：上海迪士尼度假区官方页面[citation:2]或游客分享的实景照片[citation:7] -->
+                <img src="jpg/主题.jpg" alt="上海迪士尼疯狂动物城主题区入口">
+            </div>
+            <div class="news-category">乐园新闻</div>
+            <h3>疯狂动物城主题乐园即将开幕</h3>
+            <p>全球首个疯狂动物城主题乐园将在上海迪士尼度假区盛大开幕。这个沉浸式主题区将电影中的“微缩城市”变为现实[citation:6]。游客可以体验标志性游乐设施“热力追踪”（Zootopia: Hot Pursuit），这是一个适合全家游玩、包含小型坠落感的黑暗骑乘项目[citation:3]，还能与穿着百周年庆典服装的朱迪和尼克合影[citation:6]。园区内还将提供超过1200种独家主题商品[citation:6]。</p>
+            <div class="news-date">
+                <i class="fas fa-calendar"></i> 2025-12-18
+            </div>
+        </div>
+        
+        <div class="news-card">
+            <div class="news-image">
+                <!-- 图片来源参考：可选用衍生剧《疯狂动物城+》的剧照或宣传图[citation:4] -->
+                <img src="jpg/衍生剧.jpg" alt="衍生剧《疯狂动物城+》剧照">
+            </div>
+            <div class="news-category">剧集新闻</div>
+            <h3>朱迪和尼克将推出衍生剧集</h3>
+            <p>迪士尼+将推出以朱迪和尼克为主角的衍生动画剧集。在此之前，广受好评的衍生短剧集《疯狂动物城+》（Zootopia+）已于2022年上线，豆瓣开画评分达8.7分[citation:4]。该剧集巧妙地将镜头对准了电影中的配角，如大先生、鼹鼠教父、豹警官和牛局长等，用可爱且充满创意的短篇故事丰富了动物城的世界观[citation:4]。新宣布的剧集预计将延续这一风格，进一步拓展主线故事。</p>
+            <div class="news-date">
+                <i class="fas fa-calendar"></i> 2025-12-15
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-paw"></i> 疯狂动物城</h3>
+                    <p>探索动物城的奇妙世界，与朱迪和尼克一起冒险！</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="pages/characters.html">角色介绍</a></li>
+                        <li><a href="pages/gallery.html">作品集</a></li>
+                        <li><a href="pages/about.html">关于我们</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>联系我们</h4>
+                    <p>邮箱: info@zootopia.com</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-weixin"></i></a>
+                        <a href="#"><i class="fab fa-weibo"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 疯狂动物城粉丝站. 保留所有权利.</p>
+                <p>本网站为粉丝创作，非官方</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 反馈表单模态框 -->
+    <div class="modal" id="feedback-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>意见反馈</h2>
+            <form id="feedback-form">
+                <div class="form-group">
+                    <label for="name">姓名:</label>
+                    <input type="text" id="name" name="name" required>
+                    <span class="error-message" id="name-error"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">邮箱:</label>
+                    <input type="email" id="email" name="email" required>
+                    <span class="error-message" id="email-error"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">留言:</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                    <span class="error-message" id="message-error"></span>
+                </div>
+                
+                <button type="submit" class="btn-submit">提交反馈</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/theme.js"></script>
+</body>
+</html>

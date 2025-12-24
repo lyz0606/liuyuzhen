@@ -1,0 +1,82 @@
+[
+    {
+        "id": 1,
+        "name": "朱迪·霍普斯",
+        "species": "兔子",
+        "role": "主角",
+        "image": "img/characters/judy.png",
+        "description": "疯狂动物城的第一位兔子警官，充满正义感和勇气，梦想是让世界变得更美好。",
+        "traits": ["勇敢", "正义", "乐观", "执着"],
+        "color": "#4a6fa5"
+    },
+    {
+        "id": 2,
+        "name": "尼克·王尔德",
+        "species": "狐狸",
+        "role": "主角",
+        "image": "img/characters/nick.png",
+        "description": "狡猾但心地善良的狐狸，与朱迪成为搭档，共同破解动物城的谜案。",
+        "traits": ["聪明", "幽默", "忠诚", "机智"],
+        "color": "#ff6b35"
+    },
+    {
+        "id": 3,
+        "name": "闪电",
+        "species": "树懒",
+        "role": "DMV员工",
+        "image": "img/characters/flash.png",
+        "description": "动物城车辆管理局的员工，以其极慢的行动和说话速度而闻名。",
+        "traits": ["缓慢", "耐心", "友好"],
+        "color": "#2a9d8f"
+    },
+    {
+        "id": 4,
+        "name": "狮市长",
+        "species": "狮子",
+        "role": "市长",
+        "image": "img/characters/mayor.png",
+        "description": "动物城的市长，强大而有影响力，致力于维护城市的和平与秩序。",
+        "traits": ["威严", "权威", "公正"],
+        "color": "#f4a261"
+    },
+    {
+        "id": 5,
+        "name": "羊副市长",
+        "species": "绵羊",
+        "role": "副市长",
+        "image": "img/characters/bellwether.png",
+        "description": "看似温顺的副市长，实际上有着复杂的内心和计划。",
+        "traits": ["智慧", "谋略", "复杂"],
+        "color": "#e9c46a"
+    },
+    {
+        "id": 6,
+        "name": "大先生",
+        "species": "鼩鼱",
+        "role": "黑帮老大",
+        "image": "img/characters/mrbig.png",
+        "description": "动物城地下世界的统治者，体型虽小但权力巨大。",
+        "traits": ["威严", "强势", "传统"],
+        "color": "#264653"
+    },
+    {
+        "id": 7,
+        "name": "豹警官",
+        "species": "猎豹",
+        "role": "警察",
+        "image": "img/characters/clawhauser.png",
+        "description": "警局的前台接待，热爱甜甜圈，是朱迪的热情支持者。",
+        "traits": ["热情", "友好", "爱吃"],
+        "color": "#e76f51"
+    },
+    {
+        "id": 8,
+        "name": "牛局长",
+        "species": "水牛",
+        "role": "警察局长",
+        "image": "img/characters/chief.png",
+        "description": "严肃的警察局长，最初对朱迪持怀疑态度，但最终认可她的能力。",
+        "traits": ["严肃", "务实", "公正"],
+        "color": "#8d99ae"
+    }
+]

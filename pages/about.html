@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>配音演员 - 疯狂动物城</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="css/about.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <i class="fas fa-paw"></i>
+                <span>疯狂动物城</span>
+            </a>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-links">
+                <li><a href="../index.html">首页</a></li>
+                <li><a href="characters.html">角色介绍</a></li>
+                <li><a href="gallery.html">作品集</a></li>
+                <li><a href="about.html" class="active">关于我们</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button id="search-toggle" class="search-toggle">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 页面标题 -->
+<section class="about-hero">
+    <div class="container">
+        <div class="hero-content-wrapper">
+            <h1 class="about-title">
+                <i class="fas fa-microphone"></i>
+                配音演员介绍
+            </h1>
+            <p class="about-subtitle">认识为《疯狂动物城》角色赋予生命的才华横溢的配音演员</p>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* 配音演员介绍部分样式 */
+    .about-hero {
+        position: relative;
+        padding: 100px 0;
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)),
+                    url('../jpg/配音背景.jpg') 
+                    no-repeat center center;
+        background-size: cover;
+        color: white;
+        text-align: center;
+        overflow: hidden;
+        min-height: 400px;
+        display: flex;
+        align-items: center;
+    }
+    
+    /* 背景图片替代方案 - 与电影相关的图片 */
+    /* 如果想使用本地图片，可以这样引用: url('../images/voice-actors-bg.jpg') */
+    
+    /* 添加动画效果 */
+    .about-hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, rgba(74, 0, 224, 0.3), rgba(142, 45, 226, 0.3));
+        z-index: 1;
+        animation: gradientShift 15s ease infinite alternate;
+    }
+    
+    @keyframes gradientShift {
+        0% {
+            background: linear-gradient(45deg, rgba(74, 0, 224, 0.3), rgba(142, 45, 226, 0.3));
+        }
+        50% {
+            background: linear-gradient(135deg, rgba(224, 0, 120, 0.3), rgba(226, 45, 45, 0.3));
+        }
+        100% {
+            background: linear-gradient(225deg, rgba(0, 224, 168, 0.3), rgba(45, 226, 230, 0.3));
+        }
+    }
+    
+    .about-hero .container {
+        position: relative;
+        z-index: 2;
+    }
+    
+    .hero-content-wrapper {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        animation: fadeInUp 1s ease-out;
+    }
+    
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .about-title {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: #fff;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    }
+    
+    .about-title i {
+        color: #ffd700;
+        margin-right: 15px;
+        font-size: 3rem;
+    }
+    
+    .about-subtitle {
+        font-size: 1.4rem;
+        line-height: 1.6;
+        color: rgba(255, 255, 255, 0.9);
+        max-width: 600px;
+        margin: 0 auto;
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+    }
+    
+    /* 响应式调整 */
+    @media (max-width: 992px) {
+        .about-hero {
+            padding: 80px 0;
+            min-height: 350px;
+        }
+        
+        .about-title {
+            font-size: 2.8rem;
+        }
+        
+        .about-subtitle {
+            font-size: 1.2rem;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .about-hero {
+            padding: 60px 0;
+            min-height: 300px;
+        }
+        
+        .about-title {
+            font-size: 2.3rem;
+        }
+        
+        .about-title i {
+            font-size: 2.2rem;
+            margin-right: 10px;
+        }
+        
+        .about-subtitle {
+            font-size: 1.1rem;
+        }
+        
+        .hero-content-wrapper {
+            padding: 30px 20px;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        .about-hero {
+            padding: 50px 0;
+            min-height: 280px;
+        }
+        
+        .about-title {
+            font-size: 2rem;
+        }
+        
+        .about-subtitle {
+            font-size: 1rem;
+        }
+    }
+</style>
+    <!-- 主要配音演员 -->
+<main class="about-main">
+    <!-- 主要角色配音演员 -->
+    <section class="about-section intro-section">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-star"></i>
+                主要角色配音演员
+            </h2>
+            
+            <div class="voice-actor-grid">
+                <!-- 金妮弗·古德温 -->
+                <div class="voice-actor-card">
+                    <div class="actor-image">
+                        <div class="photo-container actor-1">
+                            <img src="../jpg/朱迪配音演员.webp" 
+                                 alt="金妮弗·古德温" class="actor-photo">
+                            <div class="photo-overlay">
+                                <i class="fas fa-microphone-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="actor-info">
+                        <h3>金妮弗·古德温</h3>
+                        <p class="actor-role">配音角色：朱迪·霍普斯</p>
+                        <div class="actor-details">
+                            <p><strong>代表作品：</strong>《童话镇》、《他其实没那么喜欢你》</p>
+                            <p><strong>配音特点：</strong>为朱迪注入了乐观、坚韧和温暖的特质，完美诠释了角色的成长历程。</p>
+                            <p><strong>获奖情况：</strong>凭借此角色获得安妮奖最佳配音提名</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 杰森·贝特曼 -->
+                <div class="voice-actor-card reverse">
+                    <div class="actor-image">
+                        <div class="photo-container actor-2">
+                            <img src="../jpg/尼克配音.webp" 
+                                 alt="杰森·贝特曼" class="actor-photo">
+                            <div class="photo-overlay">
+                                <i class="fas fa-microphone-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="actor-info">
+                        <h3>杰森·贝特曼</h3>
+                        <p class="actor-role">配音角色：尼克·王尔德</p>
+                        <div class="actor-details">
+                            <p><strong>代表作品：</strong>《发展受阻》、《办公室》</p>
+                            <p><strong>配音特点：</strong>用慵懒而机智的声线完美塑造了尼克的狡猾与善良的双重性格。</p>
+                            <p><strong>配音挑战：</strong>需要在同一场景中快速切换情绪，展现角色复杂性</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 配角配音演员 -->
+    <section class="about-section mission-section">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-users"></i>
+                配角配音演员
+            </h2>
+            <div class="supporting-actors-grid">
+                <!-- 伊德瑞斯·艾尔巴 -->
+                <div class="actor-card">
+                    <div class="actor-icon">
+                        <div class="icon-container">
+                            <img src="../jpg/牛局长配音.webp" 
+                                 alt="伊德瑞斯·艾尔巴" class="supporting-photo">
+                            <div class="icon-overlay">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <h3>伊德瑞斯·艾尔巴</h3>
+                    <p class="actor-character">牛局长</p>
+                    <p class="actor-desc">以威严而有力的声线塑造了警察局长的权威形象</p>
+                </div>
+                
+                <!-- 珍妮·斯蕾特 -->
+                <div class="actor-card">
+                    <div class="actor-icon">
+                        <div class="icon-container">
+                            <img src="../jpg/羊副市长.webp" 
+                                 alt="珍妮·斯蕾特" class="supporting-photo">
+                            <div class="icon-overlay">
+                                <i class="fas fa-user-friends"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <h3>珍妮·斯蕾特</h3>
+                    <p class="actor-character">羊副市长</p>
+                    <p class="actor-desc">用甜美而复杂的声线完美诠释角色的多面性</p>
+                </div>
+                
+                <!-- 内特·托伦斯 -->
+                <div class="actor-card">
+                    <div class="actor-icon">
+                        <div class="icon-container">
+                            <img src="../jpg/狮市长webp.webp" 
+                                 alt="内特·托伦斯" class="supporting-photo">
+                            <div class="icon-overlay">
+                                <i class="fas fa-user-check"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <h3>内特·托伦斯</h3>
+                    <p class="actor-character">本杰明警官</p>
+                    <p class="actor-desc">用活泼热情的声线塑造了可爱的前台接待员</p>
+                </div>
+                
+                <!-- J·K·西蒙斯 -->
+                <div class="actor-card">
+                    <div class="actor-icon">
+                        <div class="icon-container">
+                            <img src="../jpg/豹警官.webp" 
+                                 alt="J·K·西蒙斯" class="supporting-photo">
+                            <div class="icon-overlay">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <h3>J·K·西蒙斯</h3>
+                    <p class="actor-character">市长狮明德</p>
+                    <p class="actor-desc">浑厚有力的声线展现了市长的领导力与亲和力</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- 配音幕后故事 -->
+        <section class="about-section features-section">
+            <div class="container">
+                <h2 class="section-title">
+                    <i class="fas fa-film"></i>
+                    配音幕后故事
+                </h2>
+                <div class="behind-scenes-list">
+                    <div class="story-item">
+                        <div class="story-number">01</div>
+                        <div class="story-content">
+                            <h3>配音过程</h3>
+                            <p>大多数配音演员是在录音室单独录制，但金妮弗和杰森有几场关键戏份是一起录制，以增强化学反应。</p>
+                        </div>
+                    </div>
+                    <div class="story-item">
+                        <div class="story-number">02</div>
+                        <div class="story-content">
+                            <h3>角色研究</h3>
+                            <p>配音演员们参观了真实的警察局和动物栖息地，深入了解角色职业和动物习性。</p>
+                        </div>
+                    </div>
+                    <div class="story-item">
+                        <div class="story-number">03</div>
+                        <div class="story-content">
+                            <h3>即兴创作</h3>
+                            <p>杰森·贝特曼为尼克添加了许多即兴的幽默台词，这些后来成为电影的经典对话。</p>
+                        </div>
+                    </div>
+                    <div class="story-item">
+                        <div class="story-number">04</div>
+                        <div class="story-content">
+                            <h3>声音挑战</h3>
+                            <p>部分配音演员需要模仿动物叫声和习性声音，为角色增添真实感。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 国际配音版本 -->
+        <section class="about-section team-section">
+            <div class="container">
+                <h2 class="section-title">
+                    <i class="fas fa-globe"></i>
+                    国际配音版本
+                </h2>
+                <div class="dub-versions">
+                    <div class="version-card">
+                        <div class="version-flag">
+                            <i class="fas fa-flag-usa"></i>
+                        </div>
+                        <h3>英语原版</h3>
+                        <p class="version-desc">原始配音阵容，保持了最完整的表演意图和情感表达</p>
+                    </div>
+                    <div class="version-card">
+                        <div class="version-flag">
+                            <i class="fas fa-flag"></i>
+                        </div>
+                        <h3>中文配音版</h3>
+                        <p class="version-desc">季冠霖、张震等知名配音演员参与，进行了优秀的本土化适配</p>
+                    </div>
+                    <div class="version-card">
+                        <div class="version-flag">
+                            <i class="fas fa-flag"></i>
+                        </div>
+                        <h3>日语配音版</h3>
+                        <p class="version-desc">由日本知名声优担当，保持了角色性格的同时加入日本文化元素</p>
+                    </div>
+                </div>
+                
+                <div class="voice-acting-facts">
+                    <h3><i class="fas fa-funny"></i> 配音趣闻</h3>
+                    <ul>
+                        <li>金妮弗·古德温为了配好朱迪，练习了多种兔子跳跃和奔跑时的呼吸声</li>
+                        <li>杰森·贝特曼在配音时经常即兴发挥，导演保留了许多他的创意</li>
+                        <li>配音演员们都需要观看动画草图，以便更好地理解角色动作和情绪</li>
+                        <li>某些场景需要配音演员进行身体表演，以捕捉更真实的声音效果</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 获奖与认可 -->
+        <section class="about-section contact-section">
+            <div class="container">
+                <h2 class="section-title">
+                    <i class="fas fa-award"></i>
+                    获奖与认可
+                </h2>
+                <div class="awards-content">
+                    <div class="award-item">
+                        <i class="fas fa-trophy"></i>
+                        <div>
+                            <h3>安妮奖</h3>
+                            <p>最佳动画电影配音表演提名</p>
+                        </div>
+                    </div>
+                    <div class="award-item">
+                        <i class="fas fa-star"></i>
+                        <div>
+                            <h3>影评人认可</h3>
+                            <p>配音表演获得影评人一致好评，特别是主角的化学反应</p>
+                        </div>
+                    </div>
+                    <div class="award-item">
+                        <i class="fas fa-users"></i>
+                        <div>
+                            <h3>观众喜爱</h3>
+                            <p>配音表演深受全球观众喜爱，成为动画配音的典范</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="closing-note">
+                    <h3>配音的重要性</h3>
+                    <p>《疯狂动物城》的成功离不开这些才华横溢的配音演员。他们不仅仅是"念台词"，而是真正赋予了角色生命、情感和个性。通过他们的声音表演，动物城的居民们变得栩栩如生，让观众能够与他们建立情感连接，共同经历欢笑、挑战和成长。</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-paw"></i> 疯狂动物城</h3>
+                    <p>探索动物城的奇妙世界，与朱迪和尼克一起冒险！</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="../index.html">首页</a></li>
+                        <li><a href="characters.html">角色介绍</a></li>
+                        <li><a href="gallery.html">作品集</a></li>
+                        <li><a href="about.html">关于我们</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>联系我们</h4>
+                    <p>邮箱: info@zootopia.com</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-weixin"></i></a>
+                        <a href="#"><i class="fab fa-weibo"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 疯狂动物城粉丝站. 保留所有权利.</p>
+                <p>本网站为粉丝创作，非官方</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/theme.js"></script>
+    <script src="js/about.js"></script>
+</body>
+</html>

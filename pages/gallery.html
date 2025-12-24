@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作品集 - 疯狂动物城</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="css/gallery.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 全局页面背景 */
+        body {
+            position: relative;
+            min-height: 100vh;
+            background: #f8f9fa; /* 备用背景色 */
+            overflow-x: hidden;
+        }
+        
+        /* 页面背景图片层 */
+        .page-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.9)),
+                url('../jpg/城市全貌.jpg') 
+                no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed;
+            filter: blur(3px); /* 添加轻微模糊效果 */
+            opacity: 0.9;
+        }
+        
+        /* 内容区域增强 */
+        .gallery-main, .gallery-filters, .footer {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* 作品展示部分样式 */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            padding: 20px 0;
+        }
+        
+        .gallery-item {
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(5px); /* 玻璃态效果 */
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            background: rgba(255, 255, 255, 0.98);
+        }
+        
+        .gallery-item-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover .gallery-item-img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-item-content {
+            padding: 18px;
+        }
+        
+        .gallery-item-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #333;
+            line-height: 1.4;
+        }
+        
+        .gallery-item-description {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .gallery-item-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: #888;
+            padding-top: 12px;
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
+        }
+        
+        .gallery-item-category {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: 0 3px 10px rgba(106, 17, 203, 0.2);
+        }
+        
+        /* 筛选器样式增强 */
+        .gallery-filters {
+            padding: 30px 0;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            margin: 20px auto;
+            max-width: 95%;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        
+        .filter-tab {
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid rgba(106, 17, 203, 0.1);
+            padding: 10px 22px;
+            border-radius: 30px;
+            font-weight: 600;
+            color: #555;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .filter-tab:hover {
+            background: rgba(106, 17, 203, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(106, 17, 203, 0.1);
+        }
+        
+        /* 筛选器激活状态 */
+        .filter-tab.active {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 5px 20px rgba(106, 17, 203, 0.3);
+        }
+        
+        /* 页脚增强 */
+        .footer {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            margin-top: 50px;
+        }
+        
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 18px;
+            }
+            
+            .gallery-filters {
+                padding: 20px 0;
+            }
+            
+            .filter-tabs {
+                gap: 8px;
+            }
+            
+            .filter-tab {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            
+            .filter-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .filter-tab {
+                width: 80%;
+                justify-content: center;
+            }
+            
+            .page-background {
+                filter: blur(2px); /* 移动设备减少模糊程度 */
+            }
+        }
+        
+        /* 暗色模式适配 */
+        [data-theme="dark"] .gallery-item {
+            background: rgba(30, 30, 40, 0.9);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        [data-theme="dark"] .gallery-item:hover {
+            background: rgba(40, 40, 50, 0.95);
+        }
+        
+        [data-theme="dark"] .gallery-item-title {
+            color: #fff;
+        }
+        
+        [data-theme="dark"] .gallery-item-description {
+            color: #ccc;
+        }
+        
+        [data-theme="dark"] .gallery-filters {
+            background: rgba(30, 30, 40, 0.85);
+        }
+        
+        [data-theme="dark"] .filter-tab {
+            background: rgba(40, 40, 50, 0.9);
+            color: #ccc;
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        [data-theme="dark"] .footer {
+            background: rgba(30, 30, 40, 0.9);
+        }
+        
+        [data-theme="dark"] .page-background {
+            background: 
+                linear-gradient(rgba(20, 20, 30, 0.9), rgba(25, 25, 35, 0.95)),
+                url('../jpg/背景图.webp') 
+                no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body>
+    <!-- 页面背景层 -->
+    <div class="page-background"></div>
+    
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <i class="fas fa-paw"></i>
+                <span>疯狂动物城</span>
+            </a>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-links">
+                <li><a href="../index.html">首页</a></li>
+                <li><a href="characters.html">角色介绍</a></li>
+                <li><a href="gallery.html" class="active">作品集</a></li>
+                <li><a href="about.html">关于我们</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button id="search-toggle" class="search-toggle">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+   <!-- 页面标题 -->
+<section class="gallery-hero">
+    <div class="container">
+        <h1 class="gallery-title">
+            <i class="fas fa-images"></i>
+            作品集
+        </h1>
+        <p class="gallery-subtitle">欣赏疯狂动物城的精彩瞬间和精美作品</p>
+    </div>
+</section>
+
+<style>
+    /* 作品集标题部分样式 */
+    .gallery-hero {
+        position: relative;
+        padding: 120px 0;
+        background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)),
+                    url('../jpg/角色背景.webp') 
+                    no-repeat center center;
+        background-size: cover;
+        background-attachment: fixed; /* 视差滚动效果 */
+        color: white;
+        text-align: center;
+        overflow: hidden;
+        min-height: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 40px;
+        border-radius: 0 0 30px 30px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* 添加动态粒子效果背景 */
+    .gallery-hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: 
+            radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 20%),
+            radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.15) 0%, transparent 20%),
+            radial-gradient(circle at 40% 80%, rgba(100, 149, 237, 0.1) 0%, transparent 20%);
+        z-index: 1;
+        animation: pulse 8s infinite alternate;
+    }
+    
+    @keyframes pulse {
+        0% {
+            opacity: 0.5;
+            transform: scale(1);
+        }
+        100% {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+    }
+    
+    /* 添加光晕效果 */
+    .gallery-hero::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(ellipse at center, rgba(255, 215, 0, 0.2) 0%, transparent 70%);
+        z-index: 1;
+        pointer-events: none;
+    }
+    
+    .gallery-hero .container {
+        position: relative;
+        z-index: 2;
+        max-width: 900px;
+    }
+    
+    .gallery-title {
+        font-size: 4.5rem;
+        font-weight: 800;
+        margin-bottom: 25px;
+        color: #fff;
+        text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.7);
+        letter-spacing: 2px;
+        animation: fadeInDown 1.2s ease-out;
+        text-transform: uppercase;
+        position: relative;
+        display: inline-block;
+    }
+    
+    .gallery-title::after {
+        content: '';
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 120px;
+        height: 4px;
+        background: linear-gradient(90deg, #ffd700, #ffaa00);
+        border-radius: 2px;
+        box-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+    }
+    
+    @keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-40px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .gallery-title i {
+        color: #ffd700;
+        margin-right: 25px;
+        font-size: 4rem;
+        text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+        animation: iconGlow 2s infinite alternate;
+    }
+    
+    @keyframes iconGlow {
+        0% {
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+        }
+        100% {
+            text-shadow: 0 0 25px rgba(255, 215, 0, 1), 0 0 35px rgba(255, 215, 0, 0.8);
+        }
+    }
+    
+    .gallery-subtitle {
+        font-size: 1.8rem;
+        line-height: 1.6;
+        color: rgba(255, 255, 255, 0.95);
+        max-width: 700px;
+        margin: 40px auto 0;
+        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+        animation: fadeInUp 1.2s ease-out 0.3s both;
+        font-weight: 300;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 15px;
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    /* 添加滚动指示器 */
+    .scroll-indicator {
+        position: absolute;
+        bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 3;
+        color: #fff;
+        font-size: 1.5rem;
+        animation: bounce 2s infinite;
+    }
+    
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {
+            transform: translateX(-50%) translateY(0);
+        }
+        40% {
+            transform: translateX(-50%) translateY(-10px);
+        }
+        60% {
+            transform: translateX(-50%) translateY(-5px);
+        }
+    }
+    
+    /* 响应式调整 */
+    @media (max-width: 1200px) {
+        .gallery-hero {
+            min-height: 450px;
+            padding: 100px 0;
+        }
+        
+        .gallery-title {
+            font-size: 4rem;
+        }
+        
+        .gallery-title i {
+            font-size: 3.5rem;
+        }
+        
+        .gallery-subtitle {
+            font-size: 1.6rem;
+        }
+    }
+    
+    @media (max-width: 992px) {
+        .gallery-hero {
+            min-height: 400px;
+            padding: 80px 0;
+            background-attachment: scroll; /* 移动设备上禁用视差 */
+        }
+        
+        .gallery-title {
+            font-size: 3.2rem;
+        }
+        
+        .gallery-title i {
+            font-size: 3rem;
+            margin-right: 15px;
+        }
+        
+        .gallery-subtitle {
+            font-size: 1.4rem;
+            margin-top: 30px;
+            padding: 15px;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .gallery-hero {
+            min-height: 350px;
+            padding: 70px 0;
+        }
+        
+        .gallery-title {
+            font-size: 2.8rem;
+            letter-spacing: 1px;
+        }
+        
+        .gallery-title i {
+            font-size: 2.5rem;
+        }
+        
+        .gallery-title::after {
+            width: 90px;
+            bottom: -10px;
+        }
+        
+        .gallery-subtitle {
+            font-size: 1.2rem;
+            margin-top: 25px;
+            padding: 12px;
+        }
+        
+        .scroll-indicator {
+            font-size: 1.2rem;
+            bottom: 30px;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        .gallery-hero {
+            min-height: 300px;
+            padding: 60px 20px;
+            border-radius: 0 0 20px 20px;
+        }
+        
+        .gallery-title {
+            font-size: 2.3rem;
+        }
+        
+        .gallery-title i {
+            font-size: 2rem;
+            margin-right: 10px;
+        }
+        
+        .gallery-subtitle {
+            font-size: 1.1rem;
+            margin-top: 20px;
+            padding: 10px;
+        }
+        
+        .scroll-indicator {
+            font-size: 1rem;
+            bottom: 20px;
+        }
+    }
+</style>
+
+<!-- 添加滚动指示器（可选） -->
+<div class="scroll-indicator">
+    <i class="fas fa-chevron-down"></i>
+</div>
+    <!-- 分类筛选 -->
+    <section class="gallery-filters">
+        <div class="container">
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-category="all">
+                    <i class="fas fa-th"></i> 全部
+                </button>
+                <button class="filter-tab" data-category="scene">
+                    <i class="fas fa-city"></i> 场景
+                </button>
+                <button class="filter-tab" data-category="character">
+                    <i class="fas fa-user"></i> 角色
+                </button>
+                <button class="filter-tab" data-category="poster">
+                    <i class="fas fa-image"></i> 海报
+                </button>
+                <button class="filter-tab" data-category="fanart">
+                    <i class="fas fa-paint-brush"></i> 同人作品
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 作品展示 -->
+    <main class="gallery-main">
+        <div class="container">
+            <div class="gallery-grid" id="gallery-grid">
+                <!-- 场景类作品 -->
+                <div class="gallery-item" data-category="scene">
+                    <div class="gallery-item-img-container">
+                        <img src="../jpg/城市全貌.jpg" 
+                             alt="动物城全景" class="gallery-item-img">
+                    </div>
+                    <div class="gallery-item-content">
+                        <h3 class="gallery-item-title">动物城全景</h3>
+                        <p class="gallery-item-description">从空中俯瞰动物城的壮观景象，展现不同气候区的完美融合。</p>
+                        <div class="gallery-item-meta">
+                            <span><i class="far fa-calendar"></i> 2023-05-12</span>
+                            <span class="gallery-item-category">场景</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 角色类作品 -->
+                <div class="gallery-item" data-category="character">
+                    <div class="gallery-item-img-container">
+                        <img src="../jpg/右.webp" 
+                             alt="朱迪和尼克" class="gallery-item-img">
+                    </div>
+                    <div class="gallery-item-content">
+                        <h3 class="gallery-item-title">最佳搭档</h3>
+                        <p class="gallery-item-description">朱迪警官和尼克在破案过程中的经典瞬间，展现了他们之间的默契配合。</p>
+                        <div class="gallery-item-meta">
+                            <span><i class="far fa-calendar"></i> 2023-04-28</span>
+                            <span class="gallery-item-category">角色</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 海报类作品 -->
+                <div class="gallery-item" data-category="poster">
+                    <div class="gallery-item-img-container">
+                        <img src="../jpg/海报.webp" 
+                             alt="电影海报" class="gallery-item-img">
+                    </div>
+                    <div class="gallery-item-content">
+                        <h3 class="gallery-item-title">官方电影海报</h3>
+                        <p class="gallery-item-description">疯狂动物城官方电影海报，展现了电影的主要角色和主题色调。</p>
+                        <div class="gallery-item-meta">
+                            <span><i class="far fa-calendar"></i> 2023-06-10</span>
+                            <span class="gallery-item-category">海报</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 场景类作品 -->
+                <div class="gallery-item" data-category="scene">
+                    <div class="gallery-item-img-container">
+                        <img src="../jpg/雨林区.jpg" 
+                             alt="雨林区" class="gallery-item-img">
+                    </div>
+                    <div class="gallery-item-content">
+                        <h3 class="gallery-item-title">雨林区夜景</h3>
+                        <p class="gallery-item-description">雨林区夜晚的迷人景色，热带植物与灯光交相辉映。</p>
+                        <div class="gallery-item-meta">
+                            <span><i class="far fa-calendar"></i> 2023-07-05</span>
+                            <span class="gallery-item-category">场景</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 同人作品 -->
+                <div class="gallery-item" data-category="fanart">
+                    <div class="gallery-item-img-container">
+                        <img src="../jpg/二创.webp" 
+                             alt="粉丝创作" class="gallery-item-img">
+                    </div>
+                    <div class="gallery-item-content">
+                        <h3 class="gallery-item-title">动物城幻想曲</h3>
+                        <p class="gallery-item-description">粉丝创作的幻想风格动物城，加入了更多奇幻元素和细节。</p>
+                        <div class="gallery-item-meta">
+                            <span><i class="far fa-calendar"></i> 2023-05-30</span>
+                            <span class="gallery-item-category">同人作品</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 角色类作品 -->
+                <div class="gallery-item" data-category="character">
+                    <div class="gallery-item-img-container">
+                        <img src="../jpg/闪电角色.webp" 
+                             alt="闪电" class="gallery-item-img">
+                    </div>
+                    <div class="gallery-item-content">
+                        <h3 class="gallery-item-title">闪电的悠闲时光</h3>
+                        <p class="gallery-item-description">树懒闪电在车管所的经典场景，展现了其缓慢而幽默的性格特点。</p>
+                        <div class="gallery-item-meta">
+                            <span><i class="far fa-calendar"></i> 2023-06-22</span>
+                            <span class="gallery-item-category">角色</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 海报类作品 -->
+                <div class="gallery-item" data-category="poster">
+                    <div class="gallery-item-img-container">
+                        <img src="../jpg/纪念海报.webp" 
+                             alt="纪念海报" class="gallery-item-img">
+                    </div>
+                    <div class="gallery-item-content">
+                        <h3 class="gallery-item-title">五周年纪念海报</h3>
+                        <p class="gallery-item-description">疯狂动物城上映五周年特别纪念版海报，集合了所有主要角色。</p>
+                        <div class="gallery-item-meta">
+                            <span><i class="far fa-calendar"></i> 2023-03-04</span>
+                            <span class="gallery-item-category">海报</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 同人作品 -->
+                <div class="gallery-item" data-category="fanart">
+                    <div class="gallery-item-img-container">
+                        <img src="../jpg/手绘.webp"
+                             alt="手绘作品" class="gallery-item-img">
+                    </div>
+                    <div class="gallery-item-content">
+                        <h3 class="gallery-item-title">手绘动物城</h3>
+                        <p class="gallery-item-description">手绘风格的动物城街景，展现了粉丝对电影的独特理解和艺术表达。</p>
+                        <div class="gallery-item-meta">
+                            <span><i class="far fa-calendar"></i> 2023-04-15</span>
+                            <span class="gallery-item-category">同人作品</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 场景类作品 -->
+                <div class="gallery-item" data-category="scene">
+                    <div class="gallery-item-img-container">
+                        <img src="../jpg/撒哈拉广场.jpg" 
+                             alt="撒哈拉广场" class="gallery-item-img">
+                    </div>
+                    <div class="gallery-item-content">
+                        <h3 class="gallery-item-title">撒哈拉广场</h3>
+                        <p class="gallery-item-description">沙漠气候区的中心广场，烈日下的骆驼商队和独特的沙漠建筑风格。</p>
+                        <div class="gallery-item-meta">
+                            <span><i class="far fa-calendar"></i> 2023-07-18</span>
+                            <span class="gallery-item-category">场景</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 图片预览模态框 -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightbox-close">
+            <i class="fas fa-times"></i>
+        </button>
+        <button class="lightbox-prev" id="lightbox-prev">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="lightbox-next" id="lightbox-next">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        <div class="lightbox-content">
+            <img id="lightbox-image" src="" alt="">
+            <div class="lightbox-info">
+                <h3 id="lightbox-title"></h3>
+                <p id="lightbox-description"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-paw"></i> 疯狂动物城</h3>
+                    <p>探索动物城的奇妙世界，与朱迪和尼克一起冒险！</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="../index.html">首页</a></li>
+                        <li><a href="characters.html">角色介绍</a></li>
+                        <li><a href="gallery.html">作品集</a></li>
+                        <li><a href="about.html">关于我们</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>联系我们</h4>
+                    <p>邮箱: info@zootopia.com</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-weixin"></i></a>
+                        <a href="#"><i class="fab fa-weibo"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 疯狂动物城粉丝站. 保留所有权利.</p>
+                <p>本网站为粉丝创作，非官方</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/theme.js"></script>
+    <script>
+        // 作品筛选功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterTabs = document.querySelectorAll('.filter-tab');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            
+            // 筛选功能
+            filterTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // 移除所有active类
+                    filterTabs.forEach(t => t.classList.remove('active'));
+                    // 为当前点击的选项卡添加active类
+                    this.classList.add('active');
+                    
+                    const category = this.getAttribute('data-category');
+                    
+                    // 筛选作品
+                    galleryItems.forEach(item => {
+                        if (category === 'all' || item.getAttribute('data-category') === category) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // 图片预览功能
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightbox-image');
+            const lightboxTitle = document.getElementById('lightbox-title');
+            const lightboxDescription = document.getElementById('lightbox-description');
+            const lightboxClose = document.getElementById('lightbox-close');
+            const lightboxPrev = document.getElementById('lightbox-prev');
+            const lightboxNext = document.getElementById('lightbox-next');
+            
+            let currentImageIndex = 0;
+            const images = Array.from(galleryItems);
+            
+            // 打开lightbox
+            galleryItems.forEach((item, index) => {
+                item.addEventListener('click', function() {
+                    const imgSrc = this.querySelector('.gallery-item-img').src;
+                    const title = this.querySelector('.gallery-item-title').textContent;
+                    const description = this.querySelector('.gallery-item-description').textContent;
+                    
+                    lightboxImage.src = imgSrc;
+                    lightboxTitle.textContent = title;
+                    lightboxDescription.textContent = description;
+                    lightbox.style.display = 'flex';
+                    currentImageIndex = index;
+                });
+            });
+            
+            // 关闭lightbox
+            lightboxClose.addEventListener('click', function() {
+                lightbox.style.display = 'none';
+            });
+            
+            // 上一张
+            lightboxPrev.addEventListener('click', function() {
+                currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+                updateLightbox();
+            });
+            
+            // 下一张
+            lightboxNext.addEventListener('click', function() {
+                currentImageIndex = (currentImageIndex + 1) % images.length;
+                updateLightbox();
+            });
+            
+            // 更新lightbox内容
+            function updateLightbox() {
+                const currentItem = images[currentImageIndex];
+                const imgSrc = currentItem.querySelector('.gallery-item-img').src;
+                const title = currentItem.querySelector('.gallery-item-title').textContent;
+                const description = currentItem.querySelector('.gallery-item-description').textContent;
+                
+                lightboxImage.src = imgSrc;
+                lightboxTitle.textContent = title;
+                lightboxDescription.textContent = description;
+            }
+            
+            // 点击lightbox背景关闭
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) {
+                    lightbox.style.display = 'none';
+                }
+            });
+            
+            // 键盘导航
+            document.addEventListener('keydown', function(e) {
+                if (lightbox.style.display === 'flex') {
+                    if (e.key === 'Escape') {
+                        lightbox.style.display = 'none';
+                    } else if (e.key === 'ArrowLeft') {
+                        currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+                        updateLightbox();
+                    } else if (e.key === 'ArrowRight') {
+                        currentImageIndex = (currentImageIndex + 1) % images.length;
+                        updateLightbox();
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
